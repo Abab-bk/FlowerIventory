@@ -19,11 +19,13 @@ Note: This plugin needs to be used with [kaluluosi/GDExcelExporter: 为Godot开�
 
 2. You need to have an inventory scene that shows the inventory UI.
 
-3. Add a Inventory node to the inventory scene.![](https://i.328888.xyz/2023/01/11/CLo8L.png)
+3. Add a Inventory node to the inventory scene.
+   
+   ![](img/CLo8L.png)
    
    Set this node property.
    
-   ![](https://i.328888.xyz/2023/01/11/CLsGp.png)
+   ![](img/CLsGp.png)
    
    Explanation:
    
@@ -50,7 +52,7 @@ Note: This plugin needs to be used with [kaluluosi/GDExcelExporter: 为Godot开�
    inventory.add_item(id, num, type)
    ```
    
-   ![](https://i.328888.xyz/2023/01/11/CLSyk.png)
+   ![](img/CLSyk.png)
    
    As above. type = Weapons
    
@@ -70,7 +72,7 @@ Note: This plugin needs to be used with [kaluluosi/GDExcelExporter: 为Godot开�
    inventory.sort_item(base, way)
    ```
    
-   ![](https://i.328888.xyz/2023/01/11/CLvqU.png)
+   ![](img/CLvqU.png)
    
    base = weight
 

@@ -23,11 +23,13 @@ FlowerInventory是一个为Godot Engine开发的轻量级背包插件。
 
 2. 你需要有一个背包场景，显示背包的UI。
 
-3. 在背包场景中添加 Inventory 节点：![](https://i.328888.xyz/2023/01/11/CLo8L.png)
+3. 在背包场景中添加 Inventory 节点：
+   
+   ![](img/CLo8L.png)
    
    设置该节点属性：
    
-   ![](https://i.328888.xyz/2023/01/11/CLsGp.png)
+   ![](img/CLsGp.png)
    
    讲解：
    
@@ -54,7 +56,7 @@ FlowerInventory是一个为Godot Engine开发的轻量级背包插件。
    inventory.add_item(id, num, type)
    ```
    
-   ![](https://i.328888.xyz/2023/01/11/CLSyk.png)
+   ![](img/CLSyk.png)
    
    如上图 type = Weapons
    
@@ -73,7 +75,7 @@ FlowerInventory是一个为Godot Engine开发的轻量级背包插件。
    inventory.sort_item(base, way)
    ```
    
-   ![](https://i.328888.xyz/2023/01/11/CLvqU.png)
+   ![](img/CLvqU.png)
    
    base = weight
 
