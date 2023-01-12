@@ -28,7 +28,6 @@ func add_item(id:int, num:int, type:String) -> void:
 	# 判断背包是否为空：
 	if inventory_base.get_child_count() == 0:
 		_instance_node(id, num, type)
-	# 背包不为空
 	else:
 		# 遍历所有子节点
 		for i in inventory_base.get_child_count():
@@ -47,7 +46,6 @@ func add_item(id:int, num:int, type:String) -> void:
 					str(int(inventory_base.get_child(i).get_node(item_num).text) + num)
 					break
 			else:
-				# 新添加node
 				_instance_node(id, num, type)
 				break
 				
@@ -66,10 +64,8 @@ func del_item(id:int, num:int, type:String) -> void:
 	var now_item_num:int = 0
 	for i in inventory_base.get_child_count(): # -> int
 		if inventory_base.get_child(i).item_id == id:
-			print_debug("找到ID，添加进删除列表")
 			# 比较删除数量大小
 			now_item_num = int(inventory_base.get_child(i).get_node(item_num).text)
-			# 如果当前量小于要删除的量
 			if now_item_num <= num:
 				now_item_num = 0
 				del_array.append(inventory_base.get_child(i).get_index())
@@ -104,15 +100,14 @@ func sort_item(base:String, way:String) -> void:
 		# 排列顺序数组.添加（数据表.类型.data().物品ID.排列依据）
 		# _data[type].data()[id].name
 		# key是排序依据 value是索引
-		# 先存起来一起排
 		sort_dic[_data[inventory_base.get_child(i).item_type].data()[inventory_base.get_child(i).item_id][base]] = inventory_base.get_child(i).get_index()
 		sort_arr.append(_data[inventory_base.get_child(i).item_type].data()[inventory_base.get_child(i).item_id][base])
 		sort_node.append(inventory_base.get_child(i).get_instance_id()) # -> int
 	# 排序数组
 	for i in inventory_base.get_child_count():
-		if way == "large_to_small":
+		if way == "small_to_large":
 			sort_arr.sort()
-		elif way == "small_to_large":
+		elif way == "large_to_small":
 			sort_arr.sort()
 			sort_arr.invert()
 		else:
