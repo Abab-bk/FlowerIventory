@@ -42,7 +42,7 @@ func add_item(id:int, num:int, type:String) -> void:
 				if inventory_base.get_child(i).item_id == id:
 					inventory_base.get_child(i).get_node(item_num).text =\
 					str(int(inventory_base.get_child(i).get_node(item_num).text) + num)
-					break
+					inventory_base.get_child(i).item_num = num + int(inventory_base.get_child(i).get_node(item_num).text)
 			else:
 				_instance_node(id, num, type)
 				break

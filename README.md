@@ -19,6 +19,8 @@ FlowerInventory是一个为Godot Engine开发的轻量级背包插件。
    
    export(int) var item_id
    export(String) var item_type
+   
+   var item_num:int
    ```
 
 2. 你需要有一个背包场景，显示背包的UI。

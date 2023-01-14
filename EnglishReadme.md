@@ -15,6 +15,8 @@ Note: This plugin needs to be used with [kaluluosi/GDExcelExporter: 为Godot开�
    
    export(int) var item_id
    export(String) var item_type
+   
+   var item_num:int
    ```
 
 2. You need to have an inventory scene that shows the inventory UI.
