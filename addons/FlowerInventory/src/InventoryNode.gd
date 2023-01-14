@@ -25,6 +25,7 @@ func _ready():
 
 # CC4   --BY 群确实
 func add_item(id:int, num:int, type:String) -> void:
+	has_target_item = false
 	# 判断背包是否为空：
 	if inventory_base.get_child_count() == 0:
 		_instance_node(id, num, type)
@@ -38,9 +39,6 @@ func add_item(id:int, num:int, type:String) -> void:
 		for i in inventory_base.get_child_count():
 			# 是否需要添加相同物品
 			if has_target_item:
-				# 需要添加相同物品
-				# 改变子节点数量
-				# 判断这个节点的id是不是要添加的节点的id
 				if inventory_base.get_child(i).item_id == id:
 					inventory_base.get_child(i).get_node(item_num).text =\
 					str(int(inventory_base.get_child(i).get_node(item_num).text) + num)
