@@ -11,17 +11,13 @@ var _data
 var inventory_base
 var has_target_item: bool
 var del_array:Array
-var sort_dic:Dictionary
 var sort_arr:Array
-var sort_node:Array
 
 func _ready():
 	_data = load(data).new()
 	inventory_base = get_node(inventory_base_path)
 	del_array = []
-	sort_dic = {}
 	sort_arr = []
-	sort_node = []
 
 # CC4   --BY 群确实
 func add_item(id:int, num:int, type:String) -> void:
@@ -93,30 +89,32 @@ func type_item(type:String) -> void:
 				get_child_i(i).hide()
 				
 
-# 两个参数 依据（重量、价值）方法（从小到大、从大到小）
 func sort_item(base:String, way:String) -> void:
+	sort_arr = []
+	# 准备工作
 	for i in inventory_base.get_child_count():
-		# 排列顺序数组.添加（数据表.类型.data().物品ID.排列依据）
-		# _data[type].data()[id].name
-		# key是排序依据 value是索引
-		sort_dic[_data[get_child_i(i).item_type].data()[get_child_i(i).item_id][base]] = get_child_i(i).get_index()
-		sort_arr.append(_data[get_child_i(i).item_type].data()[get_child_i(i).item_id][base])
-		sort_node.append(get_child_i(i).get_instance_id()) # -> int
-	# 排序数组
-	for i in inventory_base.get_child_count():
-		if way == "small_to_large":
-			sort_arr.sort()
-		elif way == "large_to_small":
-			sort_arr.sort()
-			sort_arr.invert()
-		else:
-			print_debug("Error: No correct sorting (way) ")
-	for i in sort_node.size():
-		print(i)
-		print(sort_arr[0])
-		print(sort_dic[sort_arr[i]])
-		inventory_base.move_child(instance_from_id(sort_node[i]), sort_dic[sort_arr[i]])
+		# 数组套数组，[0, 1, 2] -> 0: 物品依据，1: 物品ID, 2.唯一ID
+		var item_id_arr:Dictionary = _data[get_child_i(i).item_type].data()[get_child_i(i).item_id]
+		sort_arr.append([item_id_arr[base], item_id_arr.id, get_child_i(i).get_instance_id()])
+	match way:
+		"large_to_small":
+			sort_arr.sort_custom(sorter, "large_to_small")
+		"small_to_large":
+			sort_arr.sort_custom(sorter, "small_to_large")
+	# 移动节点
+	for i in sort_arr.size():
+		inventory_base.move_child(instance_from_id(sort_arr[i][2]), i)
 
+class sorter:
+	static func large_to_small(a, b):
+		if a[0] < b[0]:
+			return true
+			return false
+		
+	static func small_to_large(a, b):
+		if a[0] > b[0]:
+			return true
+			return false
 
 func get_child_i(num):
 	return inventory_base.get_child(num)
