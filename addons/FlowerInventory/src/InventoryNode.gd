@@ -67,8 +67,7 @@ func del_item(id:int, num:int, type:String) -> void:
 			else:
 				now_item_num = now_item_num - num
 				del_array.append(get_child_i(i).get_index())
-		else:
-			print_debug("没找到ID")
+
 	for i in del_array:
 		if now_item_num == 0:
 			inventory_base.remove_child(inventory_base.get_child(del_array[i]))
@@ -107,12 +106,12 @@ func sort_item(base:String, way:String) -> void:
 
 class sorter:
 	static func large_to_small(a, b):
-		if a[0] < b[0]:
+		if a[0] > b[0]:
 			return true
 			return false
 		
 	static func small_to_large(a, b):
-		if a[0] > b[0]:
+		if a[0] < b[0]:
 			return true
 			return false
 
