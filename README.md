@@ -82,7 +82,7 @@ FlowerInventory是一个为Godot Engine开发的轻量级背包插件。
    
    如果你想要物品可以堆叠，你需要在Excel表格中添加stack属性，可以是任何属性、任何值，但只要有这个属性就代表此物品可以被堆叠，类似这样：
    
-   ![](https://i.328888.xyz/2023/01/15/2kTlV.png)
+   ![](img/stack.png)
 
 ## 其他
 

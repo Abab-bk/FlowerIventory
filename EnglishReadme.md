@@ -80,7 +80,7 @@ Note: This plugin needs to be used with [kaluluosi/GDExcelExporter: 为Godot开�
    
    If you want the items to be stackable, you need to add the stack attribute to the Excel sheet, which can be any attribute, any value, but as long as the attribute is there it means the item can be stacked, something like this.
    
-   ![](https://i.328888.xyz/2023/01/15/2kTlV.png)
+   ![](img/stack.png)
 
 ## Other
 
