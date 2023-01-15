@@ -17,9 +17,8 @@ FlowerInventory是一个为Godot Engine开发的轻量级背包插件。
    ```gdscript
    extends Control # 此项可自定义
    
-   export(int) var item_id
-   export(String) var item_type
-   
+   var item_id:int
+   var item_type:String
    var item_num:int
    ```
 
@@ -80,6 +79,10 @@ FlowerInventory是一个为Godot Engine开发的轻量级背包插件。
    ![](img/CLvqU.png)
    
    base = weight
+   
+   如果你想要物品可以堆叠，你需要在Excel表格中添加stack属性，可以是任何属性、任何值，但只要有这个属性就代表此物品可以被堆叠，类似这样：
+   
+   ![](https://i.328888.xyz/2023/01/15/2kTlV.png)
 
 ## 其他
 
