@@ -35,7 +35,7 @@ func add_item(id:int, num:int, type:String) -> void:
 		for i in inventory_base.get_child_count():
 			# 是否需要添加相同物品
 			if has_target_item:
-				if _data[type].data()[id].has("stack"):
+				if _data[type].data[id].has("stack"):
 					if get_child_i(i).item_id == id:
 						get_child_i(i).get_node(item_num).text =\
 						str(int(get_child_i(i).get_node(item_num).text) + num)
@@ -48,10 +48,10 @@ func add_item(id:int, num:int, type:String) -> void:
 func _instance_node(id:int, num:int, type:String):
 	var _add_node = item_template.instance()
 	inventory_base.add_child(_add_node)
-	_add_node.get_node(item_name).text = _data[type].data()[id].name
+	_add_node.get_node(item_name).text = _data[type].data[id].name
 	_add_node.get_node(item_num).text = str(num)
-	if "icon" in _data[type].data()[id]:
-		_add_node.get_node(item_icon).texture = load(_data[type].data()[id].icon)
+	if "icon" in _data[type].data[id]:
+		_add_node.get_node(item_icon).texture = load(_data[type].data[id].icon)
 	_add_node.item_id = id
 	_add_node.item_type = type
 
@@ -93,7 +93,7 @@ func sort_item(base:String, way:String) -> void:
 	# 准备工作
 	for i in inventory_base.get_child_count():
 		# 数组套数组，[0, 1, 2] -> 0: 物品依据，1: 物品ID, 2.唯一ID
-		var item_id_arr:Dictionary = _data[get_child_i(i).item_type].data()[get_child_i(i).item_id]
+		var item_id_arr:Dictionary = _data[get_child_i(i).item_type].data[get_child_i(i).item_id]
 		sort_arr.append([item_id_arr[base], item_id_arr.id, get_child_i(i).get_instance_id()])
 	match way:
 		"large_to_small":
