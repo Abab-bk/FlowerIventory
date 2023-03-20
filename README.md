@@ -1,5 +1,9 @@
 # FlowerInventory
 
+## Godot 4 版本：
+
+[Abab-bk/FlowerIventory at 2.0-GD4 (github.com)](https://github.com/Abab-bk/FlowerIventory/tree/2.0-GD4)
+
 ## 语言 / Language
 
 [english](EnglishReadme.md)

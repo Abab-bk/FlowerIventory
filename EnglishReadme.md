@@ -1,5 +1,9 @@
 # FlowerInventory
 
+## For Godot 4 :
+
+[Abab-bk/FlowerIventory at 2.0-GD4 (github.com)](https://github.com/Abab-bk/FlowerIventory/tree/2.0-GD4)
+
 ## Overview
 
 Lightweight inventory system plugin for Godot Engine.
