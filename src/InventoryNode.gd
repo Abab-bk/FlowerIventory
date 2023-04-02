@@ -66,21 +66,24 @@ func add_item(id:int, num:int, type:String) -> void:
 	else:
 		# 遍历所有子节点
 		for i in inventory_base.get_child_count():
-			# 如果子节点的ID=当前传入ID，就是要添加相同物品 -> 改变数字
-			if get_child_i(i).item_id == id:
+			var child: Node = get_child_i(i)
+			if child.item_id == id:
+				# 如果子节点的ID=当前传入ID，就是要添加相同物品 -> 改变数字
+				if _data[type].data[id].has("stack"):
+					var num_node: Node = child.get_node(item_num)
+					var new_num: int = child.item_num + num
+					num_node.text = str(new_num)
+					child.item_num = new_num
+				else:
+					# 如果没有设置 stack 字段，那么就添加重复的物品
+					_instance_node(id, num, type)
+				
 				has_target_item = true
 				break
-		for i in inventory_base.get_child_count():
-			# 是否需要添加相同物品
-			if has_target_item:
-				if _data[type].data[id].has("stack"):
-					if get_child_i(i).item_id == id:
-						get_child_i(i).get_node(item_num).text =\
-						str(int(get_child_i(i).get_node(item_num).text) + num)
-						get_child_i(i).item_num = num + int(get_child_i(i).get_node(item_num).text)
-			else:
-				_instance_node(id, num, type)
-				break
+
+		# 添加新的物品
+		if not has_target_item:
+			_instance_node(id, num, type)
 	
 	all_item.clear()
 	for i in inventory_base.get_children():
@@ -98,6 +101,7 @@ func _instance_node(id:int, num:int, type:String):
 		_add_node.get_node(item_icon).texture = load(_data[type].data[id].icon)
 	_add_node.item_id = id
 	_add_node.item_type = type
+	_add_node.item_num = num
 	
 	add_a_item.emit()
 
